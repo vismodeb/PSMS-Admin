@@ -1,3 +1,14 @@
+<?php
+
+  require_once('confige.php');
+  session_start();
+
+  if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +61,9 @@
                 Activity Log
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="logout.php">
                 <i class="mdi mdi-logout mr-2 text-primary"></i>
-                Signout
+                Logout
               </a>
             </div>
           </li>
@@ -162,7 +173,7 @@
             </div>
           </li>
           <li class="nav-item nav-logout d-none d-lg-block">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="logout.php">
               <i class="mdi mdi-power"></i>
             </a>
           </li>

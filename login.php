@@ -1,6 +1,7 @@
 <?php
 
 	require_once('confige.php');
+  session_start();
 
     if(isset($_POST['login'])){
         $userName = $_POST['userName'];
@@ -12,9 +13,25 @@
         else if(empty($userPassword)){
           $error = 'Password is required!';
         }
-        else if(strlen($userPassword) < 4 ){
-          $error = 'Password is Must Be 4 digit!';
+        else{
+
+          $stm = $pdo->prepare("SELECT * FROM admin WHERE username=? and password=?");
+          $stm->execute(array($userName,SHA1($userPassword)));
+          $adminCount = $stm->rowCount();
+          if($adminCount == 1){
+            $adminData = $stm->fetchAll(PDO::FETCH_ASSOC);
+            $_SESSION['admin_loggedin'] = $adminData;
+
+            header('location:index.php');
+          }
+          else{
+            $error = 'Username or Password is Worng!';
+          }
+
         }
+    }
+    if(isset($_SESSION['admin_loggedin'])){
+      header('location:index.php');
     }
 
 ?>
