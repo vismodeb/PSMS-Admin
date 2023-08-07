@@ -14,6 +14,14 @@
         echo "Connection failed: " . $e->getMessage();
     }
 
+    function teacherCount($col,$val){
+        global $pdo;
+        $stm = $pdo->prepare("SELECT $col FROM teachers WHERE $col=?");
+        $stm->execute(array($val));
+        $count = $stm->rowCount();
+        return $count;
+    }
+
     // count any colume value from students table
     // function stRowCount($col,$val){
     //     global $pdo;

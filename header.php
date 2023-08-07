@@ -261,7 +261,7 @@
             <div class="collapse" id="ui-2">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="">All Teachers</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Searce</a></li>
+                <li class="nav-item"> <a class="nav-link" href="teacher-add-new.php">Add New</a></li>
               </ul>
             </div>
           </li>
