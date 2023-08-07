@@ -1,74 +1,11 @@
-<?php
-
-    require_once('header.php');
-
-    if(isset($_POST['addTeacher'])){
-        $t_name = $_POST['t_name'];
-        $t_email = $_POST['t_email'];
-        $t_mobile = $_POST['t_mobile'];
-        $t_address = $_POST['t_address'];
-        $up_gender = $_POST['up_gender'];
-        $t_password = $_POST['t_password'];
-
-        $admin_id = $_SESSION['admin_loggedin'][0]['id'];
-        // Teacher Email Count
-        $emailCount = teacherCount('email',$t_email);
-        // Teacher Mobile Count
-        $mobileCount = teacherCount('mobile',$t_mobile);
-
-        if(empty($t_name)){
-            $error = 'Teacher Name is Required!';
-        }
-        else if(empty($t_email)){
-            $error = 'Teacher Email is Required!';
-        }
-        else if(!filter_var($t_email, FILTER_VALIDATE_EMAIL)) {
-            $error = "Invalid Teacher Email Format!";
-          }
-        else if(empty($t_mobile)){
-            $error = 'Teacher Mobile is Required!';
-        }
-        // Teacher Email Count
-        else if($emailCount != 0){
-            $error = 'Teacher Email is Already Used!';
-        }
-        else if(!is_numeric($t_mobile)){
-            $error = 'Teacher Mobile Number is Must be Number!';
-        }
-        else if(strlen($t_mobile) != 11){
-            $error = 'Teacher Mobile Number Must be 11 Digit!';
-        }
-        // Teacher Email Count
-        else if($mobileCount != 0){
-            $error = 'Teacher Mobile is Already Used!';
-        }
-        else if(empty($t_address)){
-            $error = "Teacher Address is Required!";
-        }
-        else if(empty($up_gender)){
-            $error = "Teacher Gender is Required!";
-        }
-        else if(empty($t_password)){
-            $error = 'Teacher Password is Required!';
-        }
-        else{
-            $password = SHA1($t_password);
-            $created_at = date('d-m-y H:i:s');
-
-            $insert = $pdo->prepare("INSERT INTO teachers(name,email,mobile,address,gender,password,created_at) VALUES(?,?,?,?,?,?,?)");
-            $insert->execute(array($t_name,$t_email,$t_mobile,$t_address,$up_gender,$password,$created_at));
-            $success = "Teaceher Account Create Success!";
-        }
-    }
-
-?>
+<?php require_once('header.php'); ?>
 
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-            <i class="mdi mdi-account-plus"></i>                 
+            <i class="mdi mdi-account-multiple"></i>                 
             </span>
-            New Teacher Add
+            All Teacher
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -82,7 +19,7 @@
         <div class="card">
             <div class="card-body">
             
-                <form class="edit-profile" atction="" method="POST">
+                <!-- <form class="edit-profile" atction="" method="POST">
                     <div class="">
                         <div class="form-group row">
                             <div class="col-sm-10 ml-auto">
@@ -140,16 +77,8 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Gender :</label>
                         <div class="col-sm-10">
-                            <label><input 
-                            <?php 
-                                // if($gender == 'Male'){echo 'checked';}
-                            ?>
-                            name="up_gender" value="Male" type="radio" checked> Male</label> &nbsp;
-                            <label><input 
-                            <?php 
-                                // if($gender == 'Female'){echo 'checked';}
-                            ?>
-                            name="up_gender" value="Female" type="radio"> Female</label>
+                            <label><input name="up_gender" value="Male" type="radio" checked> Male</label> &nbsp;
+                            <label><input name="up_gender" value="Female" type="radio"> Female</label>
                         </div>
                     </div>
 
@@ -169,7 +98,44 @@
                         </div>
                     </div>
                         
-                </form>
+                </form> -->
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <thead>
+
+                        <?php
+                            $stm = $pdo->prepare("SELECT * FROM teachers");
+                            $stm->execute();
+                            $teacherList = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                            foreach($teacherList as $teacher):
+                        ?>
+                        <tr>
+                            <th><?php echo $teacher['id']?></th>
+                            <th><?php echo $teacher['name']?></th>
+                            <th><?php echo $teacher['email']?></th>
+                            <th><?php echo $teacher['mobile']?></th>
+                            <th><?php echo $teacher['address']?></th>
+                            <th><?php echo $teacher['gender']?></th>
+                            <th><?php echo $teacher['password']?></th>
+                            <th><?php echo $teacher['created_at']?></th>
+                        </tr>
+                        <?php endforeach; ?>
+
+                    </thead>
+                </table>
 
             </div>
         </div>
