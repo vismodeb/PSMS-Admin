@@ -1,6 +1,4 @@
-<?php
-
-    require_once('header.php');
+<?php require_once('header.php');
 
     if(isset($_POST['addTeacher'])){
         $t_name = $_POST['t_name'];
@@ -10,7 +8,6 @@
         $up_gender = $_POST['up_gender'];
         $t_password = $_POST['t_password'];
 
-        $admin_id = $_SESSION['admin_loggedin'][0]['id'];
         // Teacher Email Count
         $emailCount = teacherCount('email',$t_email);
         // Teacher Mobile Count
@@ -83,29 +80,27 @@
             <div class="card-body">
             
                 <form class="edit-profile" atction="" method="POST">
-                    <div class="">
-                        <div class="form-group row">
-                            <div class="col-sm-10 ml-auto">
-                                <h3>1. New Teacher</h3>
-                            </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 ml-auto">
+                            <h3>1. New Teacher</h3>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
 
-                                <?php if(isset($error)): ?>
-                                    <div class="alert alert-danger">
-                                        <?php echo $error; ?>
-                                    </div>
-                                <?php endif; ?>
-                                
-                                <?php if(isset($success)): ?>
-                                    <div class="alert alert-success">
-                                        <?php echo $success; ?>
-                                    </div>
-                                <?php endif; ?>
-                        
-                            </div>
+                            <?php if(isset($error)): ?>
+                                <div class="alert alert-danger">
+                                    <?php echo $error; ?>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <?php if(isset($success)): ?>
+                                <div class="alert alert-success">
+                                    <?php echo $success; ?>
+                                </div>
+                            <?php endif; ?>
+                    
                         </div>
                     </div>
 
@@ -140,16 +135,8 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Gender :</label>
                         <div class="col-sm-10">
-                            <label><input 
-                            <?php 
-                                // if($gender == 'Male'){echo 'checked';}
-                            ?>
-                            name="up_gender" value="Male" type="radio" checked> Male</label> &nbsp;
-                            <label><input 
-                            <?php 
-                                // if($gender == 'Female'){echo 'checked';}
-                            ?>
-                            name="up_gender" value="Female" type="radio"> Female</label>
+                            <label><input name="up_gender" value="Male" type="radio" checked> Male</label> &nbsp;
+                            <label><input name="up_gender" value="Female" type="radio"> Female</label>
                         </div>
                     </div>
 
@@ -164,11 +151,10 @@
                         <div class="col-sm-2">
                         </div>
                         <div class="col-sm-7">
-                            <button type="submit" name="addTeacher" class="btn btn-gradient-primary mr-2">Submit</button>
+                            <button type="submit" name="addTeacher" class="btn btn-gradient-primary mr-2">Teacher Add</button>
                             <a href="index.php" class="btn btn-light">Cancel</a>
                         </div>
                     </div>
-                        
                 </form>
 
             </div>
