@@ -51,7 +51,7 @@
                             <th><?php echo $teacher['gender']?></th>
                             <th>
                                 <a href="teacher-edit.php?id=<?php echo $teacher['id'] ?>" class="btn btn-sm btn-gradient-dark"><i class="mdi mdi-table-edit"></i></a>
-                                <a href="teacher-delete.php?id=<?php echo $teacher['id'] ?>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
+                                <a onclick="return confirm('Are You Sure?');" href="teacher-delete.php?id=<?php echo $teacher['id'] ?>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
                             </th>
                         </tr>
                         <?php endforeach; ?>
