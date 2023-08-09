@@ -19,6 +19,12 @@
         <div class="card">
             <div class="card-body">
 
+            <div class="form-group row">
+                <div class="col-sm-7 ml-auto">
+                    <h3>All Students</h3>
+                </div>
+            </div>
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
