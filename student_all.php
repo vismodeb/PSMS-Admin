@@ -61,6 +61,7 @@
                             <th><?php echo $student['gender'];?></th>
                             <th>
                                 <a href="student_edit.php?id=<?php echo $student['id'] ?>" class="btn btn-sm btn-gradient-dark"><i class="mdi mdi-table-edit"></i></a>
+                                <a href="student_view.php?id=<?php echo $student['id'] ?>" class="btn btn-sm btn-success"><i class="mdi mdi-eye"></i></a>
                                 <a onclick="return confirm('Are You Sure?');" href="student_delete.php?id=<?php echo $student['id'] ?>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
                             </th>
                         </tr>
