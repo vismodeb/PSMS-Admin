@@ -50,8 +50,8 @@
                             <th><?php echo $subject['code'];?></th>
                             <th><?php echo $subject['type'];?></th>
                             <th>
-                                <a href="" class="btn btn-sm btn-gradient-dark"><i class="mdi mdi-table-edit"></i></a>
-                                <a href="" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
+                                <a href="subject_edit.php?id=<?php echo $subject['id'] ?>" class="btn btn-sm btn-gradient-dark"><i class="mdi mdi-table-edit"></i></a>
+                                <a onclick="return confirm('Are You Sure?');" href="subject_delete.php?id=<?php echo $subject['id'] ?>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
                             </th>
                         </tr>
                     <?php endforeach;?>
