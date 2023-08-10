@@ -9,9 +9,9 @@
         $t_password = $_POST['t_password'];
 
         // Teacher Email Count
-        $emailCount = teacherCount('email',$t_email);
+        $emailCount = getCount('teachers','email',$t_email);
         // Teacher Mobile Count
-        $mobileCount = teacherCount('mobile',$t_mobile);
+        $mobileCount = getCount('teachers','mobile',$t_mobile);
 
         if(empty($t_name)){
             $error = 'Teacher Name is Required!';
