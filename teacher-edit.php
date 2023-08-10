@@ -42,10 +42,10 @@
             if($result == true){
                 $success = 'Teacher Data update Successfully!';
                 // header('location:teacher-edit.php?success=Teacher Data Update Successfully!');
-              }
-              else{
+            }
+            else{
                 $error = 'Teacher Data update Failed!';
-              }
+            }
         }
     }
 ?>
