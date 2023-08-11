@@ -88,9 +88,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Subject Type :</label>
+                        <label class="col-sm-2">Subject Type :</label>
                         <div class="col-sm-10">
-                            <label><input name="sub_type" value="Theroy" type="radio" checked> Theroy</label> &nbsp;
+                            <label><input name="sub_type" value="Theory" type="radio" checked> Theory</label> &nbsp;
                             <label><input name="sub_type" value="Practical" type="radio"> Practical</label>
                         </div>
                     </div>
