@@ -61,7 +61,6 @@
                             <th>
                                 <a href="class_edit.php?id=<?php echo $class['id'] ?>" class="btn btn-sm btn-gradient-dark"><i class="mdi mdi-table-edit"></i></a>
                                 <a href="class_view.php?id=<?php echo $class['id'] ?>" class="btn btn-sm btn-success"><i class="mdi mdi-eye"></i></a>
-                                <a onclick="return confirm('Are You Sure?');" href="class_delete.php?id=<?php echo $class['id'] ?>" class="btn btn-sm btn-danger"><i class="mdi mdi-delete-forever"></i></a>
                             </th>
                         </tr>
                     <?php endforeach;?>
